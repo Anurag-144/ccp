@@ -218,16 +218,16 @@ const LOGIN_CSS = `
   }
 `;
 
-const API = "http://localhost:3001";
+const API = "https://ccp-production-c1e5.up.railway.app";
 
 export default function LoginPage({ onAuth }) {
-  const [tab, setTab]         = useState("signin");   // "signin" | "signup"
-  const [name, setName]       = useState("");
-  const [email, setEmail]     = useState("");
+  const [tab, setTab] = useState("signin");   // "signin" | "signup"
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPw, setShowPw]   = useState(false);
+  const [showPw, setShowPw] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError]     = useState("");
+  const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
   function reset() { setError(""); setSuccess(""); }
@@ -262,7 +262,7 @@ export default function LoginPage({ onAuth }) {
       } else {
         // store token and call parent
         localStorage.setItem("hs_token", data.token);
-        localStorage.setItem("hs_user",  JSON.stringify(data.user));
+        localStorage.setItem("hs_user", JSON.stringify(data.user));
         onAuth(data.user);
       }
     } catch {
@@ -279,8 +279,8 @@ export default function LoginPage({ onAuth }) {
       <style>{LOGIN_CSS}</style>
       <div className="auth-wrap">
         {/* decorative blobs */}
-        <div className="auth-blob" style={{ width:300, height:300, background:C,      top:-80,   left:-60  }} />
-        <div className="auth-blob" style={{ width:200, height:200, background:"#0077b6", bottom:-60, right:-40 }} />
+        <div className="auth-blob" style={{ width: 300, height: 300, background: C, top: -80, left: -60 }} />
+        <div className="auth-blob" style={{ width: 200, height: 200, background: "#0077b6", bottom: -60, right: -40 }} />
 
         <div className="auth-card auth-anim">
           {/* logo */}
@@ -300,7 +300,7 @@ export default function LoginPage({ onAuth }) {
               onClick={() => { setTab("signup"); reset(); }}>New User</button>
           </div>
 
-          {error   && <div className="auth-error">  ⚠️ {error}</div>}
+          {error && <div className="auth-error">  ⚠️ {error}</div>}
           {success && <div className="auth-success">✅ {success}</div>}
 
           {/* name (signup only) */}
@@ -339,11 +339,11 @@ export default function LoginPage({ onAuth }) {
           <div className="auth-foot">
             {tab === "signin"
               ? <>New to HydroScan?{" "}
-                  <span style={{ color: C, fontWeight: 600, cursor: "pointer" }}
-                    onClick={() => { setTab("signup"); reset(); }}>Create a free account</span></>
+                <span style={{ color: C, fontWeight: 600, cursor: "pointer" }}
+                  onClick={() => { setTab("signup"); reset(); }}>Create a free account</span></>
               : <>Already have an account?{" "}
-                  <span style={{ color: C, fontWeight: 600, cursor: "pointer" }}
-                    onClick={() => { setTab("signin"); reset(); }}>Sign in</span></>}
+                <span style={{ color: C, fontWeight: 600, cursor: "pointer" }}
+                  onClick={() => { setTab("signin"); reset(); }}>Sign in</span></>}
             <br />
             <span style={{ fontSize: 11, opacity: .65 }}>Your data is stored securely and never shared.</span>
           </div>
