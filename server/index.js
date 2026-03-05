@@ -20,7 +20,7 @@ await db.read();
 db.data ||= { users: [] };
 
 // ── Middleware ─────────────────────────────────────────────────────────────
-app.use(cors({ origin: ["http://localhost:5173", "http://localhost:4173"] }));
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 
 // POST /api/signup
