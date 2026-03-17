@@ -87,16 +87,16 @@ const LOGIN_CSS = `
   }
 `;
 
-const API = "https://ccp-production-c1e5.up.railway.app";
+const API = "https://ccp-uer2.onrender.com";
 
 export default function LoginPage({ onAuth }) {
-  const [tab, setTab]       = useState("signin");
-  const [name, setName]     = useState("");
-  const [email, setEmail]   = useState("");
+  const [tab, setTab] = useState("signin");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPw, setShowPw] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError]   = useState("");
+  const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
   function reset() { setError(""); setSuccess(""); }
@@ -136,8 +136,8 @@ export default function LoginPage({ onAuth }) {
     <>
       <style>{LOGIN_CSS}</style>
       <div className="auth-wrap">
-        <div className="auth-blob" style={{ width:300, height:300, background:C, top:-80, left:-60 }} />
-        <div className="auth-blob" style={{ width:200, height:200, background:"#0077b6", bottom:-60, right:-40 }} />
+        <div className="auth-blob" style={{ width: 300, height: 300, background: C, top: -80, left: -60 }} />
+        <div className="auth-blob" style={{ width: 200, height: 200, background: "#0077b6", bottom: -60, right: -40 }} />
         <div className="auth-card auth-anim">
           <div className="auth-logo">
             <div className="auth-logo-icon">💧</div>
@@ -147,40 +147,40 @@ export default function LoginPage({ onAuth }) {
             </div>
           </div>
           <div className="auth-tabs">
-            <button className={`auth-tab${tab==="signin"?" active":""}`} onClick={()=>{setTab("signin");reset();}}>Sign In</button>
-            <button className={`auth-tab${tab==="signup"?" active":""}`} onClick={()=>{setTab("signup");reset();}}>New User</button>
+            <button className={`auth-tab${tab === "signin" ? " active" : ""}`} onClick={() => { setTab("signin"); reset(); }}>Sign In</button>
+            <button className={`auth-tab${tab === "signup" ? " active" : ""}`} onClick={() => { setTab("signup"); reset(); }}>New User</button>
           </div>
-          {error   && <div className="auth-error">⚠️ {error}</div>}
+          {error && <div className="auth-error">⚠️ {error}</div>}
           {success && <div className="auth-success">✅ {success}</div>}
           {tab === "signup" && (
             <div>
               <label className="auth-label">Full Name</label>
               <input className="auth-input" type="text" placeholder="Jane Smith"
-                value={name} onChange={e=>setName(e.target.value)} onKeyDown={handleKey} />
+                value={name} onChange={e => setName(e.target.value)} onKeyDown={handleKey} />
             </div>
           )}
           <label className="auth-label">Email Address</label>
           <input className="auth-input" type="email" placeholder="you@example.com"
-            value={email} onChange={e=>setEmail(e.target.value)} onKeyDown={handleKey} />
+            value={email} onChange={e => setEmail(e.target.value)} onKeyDown={handleKey} />
           <label className="auth-label">Password</label>
           <div className="pw-wrap">
-            <input className="auth-input" type={showPw?"text":"password"}
-              placeholder={tab==="signup"?"Min. 6 characters":"Your password"}
-              value={password} onChange={e=>setPassword(e.target.value)} onKeyDown={handleKey}
+            <input className="auth-input" type={showPw ? "text" : "password"}
+              placeholder={tab === "signup" ? "Min. 6 characters" : "Your password"}
+              value={password} onChange={e => setPassword(e.target.value)} onKeyDown={handleKey}
               style={{ paddingRight: 42 }} />
-            <button className="pw-toggle" onClick={()=>setShowPw(p=>!p)} tabIndex={-1}>
+            <button className="pw-toggle" onClick={() => setShowPw(p => !p)} tabIndex={-1}>
               {showPw ? "🙈" : "👁️"}
             </button>
           </div>
           <button className="auth-btn" onClick={handleSubmit} disabled={loading}>
-            {loading ? "Please wait…" : tab==="signin" ? "Sign In →" : "Create Account →"}
+            {loading ? "Please wait…" : tab === "signin" ? "Sign In →" : "Create Account →"}
           </button>
           <div className="auth-divider">or</div>
           <div className="auth-foot">
-            {tab==="signin"
-              ? <>New to HydroScan? <span style={{color:C,fontWeight:600,cursor:"pointer"}} onClick={()=>{setTab("signup");reset();}}>Create a free account</span></>
-              : <>Already have an account? <span style={{color:C,fontWeight:600,cursor:"pointer"}} onClick={()=>{setTab("signin");reset();}}>Sign in</span></>}
-            <br /><span style={{fontSize:11,opacity:.65}}>Your data is stored securely and never shared.</span>
+            {tab === "signin"
+              ? <>New to HydroScan? <span style={{ color: C, fontWeight: 600, cursor: "pointer" }} onClick={() => { setTab("signup"); reset(); }}>Create a free account</span></>
+              : <>Already have an account? <span style={{ color: C, fontWeight: 600, cursor: "pointer" }} onClick={() => { setTab("signin"); reset(); }}>Sign in</span></>}
+            <br /><span style={{ fontSize: 11, opacity: .65 }}>Your data is stored securely and never shared.</span>
           </div>
         </div>
       </div>
